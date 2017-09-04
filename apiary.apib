@@ -82,8 +82,19 @@ form of choices.
             }
             
 ### Modify Question [POST]
+
 You may modify the existing question 
 
 + Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "BMW",
+                "Mercedes",
+                "Aston Martin",
+                "Maserati"
+            ]
+        }
 
 + Response 200
