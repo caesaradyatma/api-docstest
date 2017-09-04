@@ -1,0 +1,89 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# testdev
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/questions]
+
+### List All Questions [GET]
+
+Lists all the questions in the polls
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Favourite car?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "BMW",
+                        "votes": 2048
+                    }, {
+                        "choice": "Mercedes",
+                        "votes": 1024
+                    }, {
+                        "choice": "Aston Martin",
+                        "votes": 512
+                    }, {
+                        "choice": "Maserati",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "BMW",
+                "Mercedes",
+                "Aston Martin",
+                "Maserati"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite car?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "BMW",
+                        "votes": 0
+                    }, {
+                        "choice": "Mercedes",
+                        "votes": 0
+                    }, {
+                        "choice": "Aston Martin",
+                        "votes": 0
+                    }, {
+                        "choice": "Maserati",
+                        "votes": 0
+                    }
+                ]
+            }
+            
+### Modify Question [POST]
+You may modify the existing question 
+
++ Request (application/json)
+
++ Response 200
